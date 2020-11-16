@@ -21,10 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Contexts" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Update="Features\Add.feature.cs">
         <DependentUpon>Add.feature</DependentUpon>
       </Compile>
