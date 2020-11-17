@@ -24,6 +24,12 @@ namespace TrainTrain.Domain.Tests.Steps
         {
         }
 
+        [Given(@"(\d+) places sont occupées")]
+        public void SettingOccupiedPlaces(int nbPlaces)
+        {
+            _service.Reserver(_context.Wagon, nbPlaces);
+        }
+
         [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
         {
@@ -37,6 +43,11 @@ namespace TrainTrain.Domain.Tests.Steps
         [Then(@"la réservation est validée")]
         public void ReservationValidee() =>
             Assert.True(_context.ReservationFaite);
+        
+        [Then(@"la réservation est annulée")]
+        public void ReservationAnnulée() =>
+            Assert.False(_context.ReservationFaite);
+        
 
         [Then(@"le prix est de (\d+) €")]
         public void VerifierPrix(decimal prix) =>

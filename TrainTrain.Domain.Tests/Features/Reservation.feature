@@ -15,3 +15,10 @@ Scénario: Wagon vide et on réserve 4 places à 50 € chacune
   Alors la réservation est validée
   Et le prix est de 200 €
   Et il y a 4 places occupées dans le wagon
+
+Scénario: Wagon à 70% de capacité et on empêche ma réservation d'1 place
+Etant donné un wagon qui contient 100 places
+Et 70 places sont occupées
+Quand on réserve 1 place
+Alors la réservation est annulée
+Et il y a 70 places occupées dans le wagon
