@@ -14,6 +14,7 @@ namespace TrainTrain.Domain
 
         public bool Réserver(int nbPlaces)
         {
+            NbPlacesOccupées = 1;
             return true;
         }
 
