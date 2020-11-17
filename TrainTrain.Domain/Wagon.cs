@@ -12,10 +12,12 @@ namespace TrainTrain.Domain
         public int NbPlaces { get; }
         public int NbPlacesOccupees { get; private set; } = 0;
 
-        public bool Reserver(int nbPlaces)
+        public void Reserver(int nbPlaces)
         {
+            if (NbPlaces < nbPlaces + NbPlacesOccupees)
+                throw new InvalidOperationException("Dépassement de capacité");
+            
             NbPlacesOccupees = nbPlaces;
-            return true;
         }
 
     }

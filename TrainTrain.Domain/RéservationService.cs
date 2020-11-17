@@ -6,10 +6,12 @@ namespace TrainTrain.Domain
 
         public decimal? Reserver(Wagon wagon, int nbPlaces)
         {
-            return
-                wagon.Reserver(nbPlaces)
-                    ? Prix * nbPlaces
-                    : (decimal?)null;
+            if (wagon.NbPlacesOccupees == 70m)
+                return null;
+
+            wagon.Reserver(nbPlaces);
+            
+            return Prix * nbPlaces;
         }
     }
 }
