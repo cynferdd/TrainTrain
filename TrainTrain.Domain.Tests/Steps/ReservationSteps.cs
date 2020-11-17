@@ -23,18 +23,15 @@ namespace TrainTrain.Domain.Tests.Steps
         public void SettingZeroOccupiedPlace()
         {
         }
-        
-        
-        
 
         [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
         {
-            var réservé =
-                _service.Réserver(_context.Wagon, nbPlaces);
-            _context.MontantActuel = réservé ?? 0;
+            var reserve =
+                _service.Reserver(_context.Wagon, nbPlaces);
+            _context.MontantActuel = reserve ?? 0;
             _context.ReservationFaite =
-                réservé != null;
+                reserve != null;
         }
 
         [Then(@"la réservation est validée")]
@@ -47,6 +44,6 @@ namespace TrainTrain.Domain.Tests.Steps
         
         [Then(@"il y a (\d+) places? occupées? dans le wagon")]
         public void VerifierNbPlacesOccupées(int nbPlacesAttendues) =>
-            Assert.Equal(nbPlacesAttendues, _context.Wagon.NbPlacesOccupées);
+            Assert.Equal(nbPlacesAttendues, _context.Wagon.NbPlacesOccupees);
     }
 }

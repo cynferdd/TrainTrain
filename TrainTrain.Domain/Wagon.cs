@@ -10,11 +10,11 @@ namespace TrainTrain.Domain
         }
 
         public int NbPlaces { get; }
-        public int NbPlacesOccupées { get; private set; } = 0;
+        public int NbPlacesOccupees { get; private set; } = 0;
 
-        public bool Réserver(int nbPlaces)
+        public bool Reserver(int nbPlaces)
         {
-            NbPlacesOccupées = 1;
+            NbPlacesOccupees = nbPlaces;
             return true;
         }
 

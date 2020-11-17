@@ -4,11 +4,11 @@ namespace TrainTrain.Domain
     {
         private const decimal Prix = 50m;
 
-        public decimal? Réserver(Wagon wagon, int nbPlaces)
+        public decimal? Reserver(Wagon wagon, int nbPlaces)
         {
             return
-                wagon.Réserver(nbPlaces)
-                    ? Prix
+                wagon.Reserver(nbPlaces)
+                    ? Prix * nbPlaces
                     : (decimal?)null;
         }
     }
