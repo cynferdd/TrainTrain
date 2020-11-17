@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 
 .idea/
+
+TrainTrain.Domain.Tests/Features/Reservation.feature.cs
