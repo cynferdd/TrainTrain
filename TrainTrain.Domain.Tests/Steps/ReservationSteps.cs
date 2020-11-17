@@ -7,6 +7,9 @@ namespace TrainTrain.Domain.Tests.Steps
     [Binding]
     public class ReservationSteps
     {
+        private readonly RéservationService _service =
+            new RéservationService();
+        
         private readonly ReservationContext _context;
 
         public ReservationSteps(ReservationContext context) => 
@@ -27,8 +30,10 @@ namespace TrainTrain.Domain.Tests.Steps
         [When(@"on réserve (\d+) place")]
         public void PlaceReservation(int nbPlaces)
         {
+            var réservé =
+                _service.Réserver(_context.Wagon, nbPlaces);
             _context.ReservationFaite =
-                _context.Wagon.Réserver(nbPlaces);
+                réservé != null;
         }
 
         [Then(@"la réservation est validée")]
