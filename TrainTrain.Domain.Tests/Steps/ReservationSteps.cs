@@ -27,7 +27,7 @@ namespace TrainTrain.Domain.Tests.Steps
         
         
 
-        [When(@"on réserve (\d+) place")]
+        [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
         {
             var réservé =
@@ -45,7 +45,7 @@ namespace TrainTrain.Domain.Tests.Steps
         public void VerifierPrix(decimal prix) =>
             Assert.Equal(prix, _context.MontantActuel);
         
-        [Then(@"il y a (\d+) place occupée dans le wagon")]
+        [Then(@"il y a (\d+) places? occupées? dans le wagon")]
         public void VerifierNbPlacesOccupées(int nbPlacesAttendues) =>
             Assert.Equal(nbPlacesAttendues, _context.Wagon.NbPlacesOccupées);
     }
