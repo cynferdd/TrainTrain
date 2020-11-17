@@ -31,8 +31,8 @@ namespace TrainTrain.Domain.Tests.Steps
                         _context.PlacesToReserve);
         }
 
-        [Then(@"le résultat est (\d+)")]
-        public void TheResultShouldBe(int expected) =>
-            Assert.Equal(expected, _context.PlacesToReserve);
+        [Then(@"la réservation est validée")]
+        public void ReservationValidee() =>
+            Assert.True(_context.ReservationFaite);
     }
 }
