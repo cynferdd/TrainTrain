@@ -12,23 +12,20 @@ namespace TrainTrain.Domain.Tests.Steps
         public ReservationSteps(ReservationContext context) => 
             _context = context;
 
-        [Given(@"un wagon qui contient (\d+) places ")]
-        public void SettingTotalPlaces(int number) => 
-            _context.TotalPlaces = number;
+        [Given(@"un wagon qui contient (\d+) places")]
+        public void SettingTotalPlaces(int nbPlaces) => 
+            _context.Wagon = new Wagon(nbPlaces);
 
         [Given(@"aucune place n'est réservée")]
-        public void SettingZeroOccupiedPlace() => 
-            _context.OccupiedPlaces = 0;
+        public void SettingZeroOccupiedPlace()
+        {
+        }
 
         [When(@"on réserve (\d+) place")]
-        public void PlaceReservation(int number){  
-            _context.PlacesToReserve = number;
-            _context.ReservationFaite = 
-                new ReservationService().
-                    Réserver(
-                        _context.TotalPlaces, 
-                        _context.OccupiedPlaces,
-                        _context.PlacesToReserve);
+        public void PlaceReservation(int number)
+        {
+            _context.ReservationFaite =
+                _context.Wagon.Réserver(_context.PlacesToReserve);
         }
 
         [Then(@"la réservation est validée")]

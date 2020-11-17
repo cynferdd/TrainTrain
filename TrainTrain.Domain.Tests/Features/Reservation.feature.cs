@@ -19,7 +19,7 @@ namespace TrainTrain.Domain.Tests.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.5.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class AjouterDeuxNombresFeature : object, Xunit.IClassFixture<AjouterDeuxNombresFeature.FixtureData>, System.IDisposable
+    public partial class ReservationDeWagonFeature : object, Xunit.IClassFixture<ReservationDeWagonFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace TrainTrain.Domain.Tests.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Add.feature"
+#line 1 "Reservation.feature"
 #line hidden
         
-        public AjouterDeuxNombresFeature(AjouterDeuxNombresFeature.FixtureData fixtureData, TrainTrain_Domain_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ReservationDeWagonFeature(ReservationDeWagonFeature.FixtureData fixtureData, TrainTrain_Domain_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,7 @@ namespace TrainTrain.Domain.Tests.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("fr-FR"), "Features", "Ajouter deux nombres", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("fr-FR"), "Features", "Réservation de wagon", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,14 +80,14 @@ namespace TrainTrain.Domain.Tests.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Ajouter 1 et 2 doit renvoyer 3")]
-        [Xunit.TraitAttribute("FeatureTitle", "Ajouter deux nombres")]
-        [Xunit.TraitAttribute("Description", "Ajouter 1 et 2 doit renvoyer 3")]
-        public virtual void Ajouter1Et2DoitRenvoyer3()
+        [Xunit.SkippableFactAttribute(DisplayName="Wagon vide et on réserve une place")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de wagon")]
+        [Xunit.TraitAttribute("Description", "Wagon vide et on réserve une place")]
+        public virtual void WagonVideEtOnReserveUnePlace()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ajouter 1 et 2 doit renvoyer 3", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wagon vide et on réserve une place", null, tagsOfScenario, argumentsOfScenario);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,16 +109,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 4
-    testRunner.Given("un premier nombre 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Etant donné ");
+testRunner.Given("un wagon qui contient 100 places", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Etant donné ");
 #line hidden
 #line 5
-    testRunner.And("un deuxième nombre 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+testRunner.And("aucune place n\'est réservée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
 #line hidden
 #line 6
-    testRunner.When("on les additionne", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quand ");
+testRunner.When("on réserve 1 place", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quand ");
 #line hidden
 #line 7
-    testRunner.Then("le résultat est 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -131,12 +131,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                AjouterDeuxNombresFeature.FeatureSetup();
+                ReservationDeWagonFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                AjouterDeuxNombresFeature.FeatureTearDown();
+                ReservationDeWagonFeature.FeatureTearDown();
             }
         }
     }
