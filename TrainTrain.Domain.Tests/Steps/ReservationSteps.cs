@@ -7,8 +7,8 @@ namespace TrainTrain.Domain.Tests.Steps
     [Binding]
     public class ReservationSteps
     {
-        private readonly RéservationService _service =
-            new RéservationService();
+        private readonly ReservationService _service =
+            new ReservationService();
         
         private readonly ReservationContext _context;
 
@@ -32,6 +32,7 @@ namespace TrainTrain.Domain.Tests.Steps
         {
             var réservé =
                 _service.Réserver(_context.Wagon, nbPlaces);
+            _context.MontantActuel = réservé ?? 0;
             _context.ReservationFaite =
                 réservé != null;
         }
@@ -40,6 +41,10 @@ namespace TrainTrain.Domain.Tests.Steps
         public void ReservationValidee() =>
             Assert.True(_context.ReservationFaite);
 
+        [Then(@"le prix est de (\d+) €")]
+        public void VerifierPrix(decimal prix) =>
+            Assert.Equal(prix, _context.MontantActuel);
+        
         [Then(@"il y a (\d+) place occupée dans le wagon")]
         public void VerifierNbPlacesOccupées(int nbPlacesAttendues) =>
             Assert.Equal(nbPlacesAttendues, _context.Wagon.NbPlacesOccupées);

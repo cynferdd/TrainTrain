@@ -1,6 +1,6 @@
 namespace TrainTrain.Domain
 {
-    public class RéservationService
+    public class ReservationService
     {
         public decimal? Réserver(Wagon wagon, int nbPlaces)
         {
