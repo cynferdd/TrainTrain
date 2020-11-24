@@ -17,7 +17,7 @@ namespace TrainTrain.Domain
             if (NbPlaces < nbPlaces + NbPlacesOccupees)
                 throw new InvalidOperationException("Dépassement de capacité");
             
-            NbPlacesOccupees = nbPlaces;
+            NbPlacesOccupees += nbPlaces;
         }
 
     }

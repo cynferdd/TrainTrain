@@ -9,21 +9,12 @@ namespace TrainTrain.Domain
 
         public decimal? Reserver(Train train, int nbPlaces)
         {
-            var plusieursWagons = train.Wagons.Count > 1;
-            var wagon =
-                plusieursWagons
-                    ? train.Wagons[1]
-                    : train.Wagons[0];
-            
-            if (SeuilDeReservation < wagon.NbPlacesOccupees + nbPlaces)
-                return null;
+            var reservationValidee = train.Reserver(nbPlaces, SeuilDeReservation);
 
-            wagon.Reserver(nbPlaces);
-
-            if (plusieursWagons)
-                return nbPlaces == 4 ? 200 : 500;
-
-            return Prix * nbPlaces;
+            return
+                reservationValidee
+                ? Prix * nbPlaces
+                : (decimal?)null;
         }
     }
 }
