@@ -1,5 +1,8 @@
+using System.Linq;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using TrainTrain.Domain.Tests.Contexts;
+using TrainTrain.Domain.Tests.Models;
 using Xunit;
 
 namespace TrainTrain.Domain.Tests.Steps
@@ -12,75 +15,27 @@ namespace TrainTrain.Domain.Tests.Steps
         public TrainSteps(ReservationContext context)
          => _context = context;
 
-        [Given(@"un premier wagon occupé à (\d+)%")]
-        public void SettingPremierWagon(int nbPlaces)
+        
+        [Given(@"un train avec les wagons suivants :")]
+        public void SettingWagons(Table table)
         {
-            var wagon = new Wagon(100);
-            wagon.Reserver(nbPlaces);
-            
-            if( _context.Wagons.Count < 1)
-                _context.Wagons.Add(wagon);
-            else
-                _context.Wagons[0] = wagon;
+            _context.Wagons = 
+                table.CreateSet<WagonEntree>()
+                    .OrderBy(w => w.Numero)
+                    .Select(w => w.CreerWagon())
+                    .ToList();
         }
-        
-        [Given(@"un premier wagon de (\d+) places avec (\d+) places occupées")]
-        public void SettingPremierWagon(int totalPlaces, int nbPlacesOccupees)
+
+
+        [Then(@"les wagons sont composés comme ceci :")]
+        public void VerifierWagons(Table table)
         {
-            var wagon = new Wagon(totalPlaces);
-            wagon.Reserver(nbPlacesOccupees);
-            
-            if( _context.Wagons.Count < 1)
-                _context.Wagons.Add(wagon);
-            else
-                _context.Wagons[0] = wagon;
+            var wagons = table.CreateSet<WagonSortie>();
+            foreach (var wagon in wagons)
+            {
+                var realWagon = _context.Wagons[wagon.Numero -1];
+                Assert.Equal(wagon.NbPlacesOccupees, realWagon.NbPlacesOccupees);
+            }
         }
-        
-        [Given(@"un deuxième wagon vide")]
-        public void SettingDeuxiemeWagonVide()
-        {
-            var wagon = new Wagon(100);
-            
-            if( _context.Wagons.Count < 2)
-                _context.Wagons.Add(wagon);
-            else
-                _context.Wagons[1] = wagon;
-        }
-        
-        [Given(@"un deuxième wagon occupé à (\d+)%")]
-        public void SettingDeuxièmeWagon(int nbPlaces)
-        {
-            var wagon = new Wagon(100);
-            wagon.Reserver(nbPlaces);
-            
-            if( _context.Wagons.Count < 2)
-                _context.Wagons.Add(wagon);
-            else
-                _context.Wagons[1] = wagon;
-        }
-        
-        [Given(@"un troisième wagon occupé à (\d+)%")]
-        public void SettingTroisièmeWagon(int nbPlaces)
-        {
-            var wagon = new Wagon(100);
-            wagon.Reserver(nbPlaces);
-            
-            if( _context.Wagons.Count < 3)
-                _context.Wagons.Add(wagon);
-            else
-                _context.Wagons[2] = wagon;
-        }
-            
-        [Then(@"il y a (\d+) places? occupées? dans le premier wagon")]
-        public void VerifierNbPlacesOccupéesPremierWagon(int nbPlacesAttendues) =>
-            Assert.Equal(nbPlacesAttendues, _context.Wagons[0].NbPlacesOccupees);
-        
-        [Then(@"il y a (\d+) places? occupées? dans le deuxième wagon")]
-        public void VerifierNbPlacesOccupéesDeuxiemeWagon(int nbPlacesAttendues) =>
-            Assert.Equal(nbPlacesAttendues, _context.Wagons[1].NbPlacesOccupees);
-        
-        [Then(@"il y a (\d+) places? occupées? dans le troisième wagon")]
-        public void VerifierNbPlacesOccupéesTroisiemeWagon(int nbPlacesAttendues) =>
-            Assert.Equal(nbPlacesAttendues, _context.Wagons[2].NbPlacesOccupees);
     }
 }

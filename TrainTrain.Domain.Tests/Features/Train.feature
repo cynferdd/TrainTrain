@@ -1,47 +1,68 @@
 Fonctionnalité: Réservation de places dans plusieurs wagon (un train)
 
 Scénario: Train avec wagon 1 à 70% et wagon 2 vide, réservation de 4
-  Etant donné un premier wagon occupé à 70%
-  Et un deuxième wagon vide
+  Etant donné un train avec les wagons suivants :
+    | Numero | NbPlaces | Occupation |
+    |    1   |    100   |    70%     |
+    |    2   |    100   |    0%      |
   Quand on réserve 4 places
   Alors la réservation est validée
   Et le prix est de 200 €
-  Et il y a 70 places occupées dans le premier wagon
-  Et il y a 4 places occupées dans le deuxième wagon
+  Et les wagons sont composés comme ceci :
+    | Numero | NbPlacesOccupees |
+    |    1   |     70           |
+    |    2   |     4            |
+  
   
 Scénario: Train avec wagon 1 à 65% et wagon 2 vide, réservation de 10
-  Etant donné un premier wagon occupé à 65%
-  Et un deuxième wagon vide
+  Etant donné un train avec les wagons suivants :
+    | Numero | NbPlaces | Occupation |
+    |    1   |    100   |    65%     |
+    |    2   |    100   |    0%      |
   Quand on réserve 10 places
   Alors la réservation est validée
   Et le prix est de 500 €
-  Et il y a 65 places occupées dans le premier wagon
-  Et il y a 10 places occupées dans le deuxième wagon
+  Et les wagons sont composés comme ceci :
+    | Numero | NbPlacesOccupees |
+    |    1   |     65           |
+    |    2   |     10           |
 
 Scénario: Train avec wagon 1 à 65% et wagon 2 à 66%, réservation de 10
-  Etant donné un premier wagon occupé à 65%
-  Et un deuxième wagon occupé à 66%
+  Etant donné un train avec les wagons suivants :
+    | Numero | NbPlaces | Occupation |
+    |    1   |    100   |    65%     |
+    |    2   |    100   |    66%     |
   Quand on réserve 10 places
   Alors la réservation est annulée
-  Et il y a 65 places occupées dans le premier wagon
-  Et il y a 66 places occupées dans le deuxième wagon
+  Et les wagons sont composés comme ceci :
+    | Numero | NbPlacesOccupees |
+    |    1   |     65           |
+    |    2   |     66           |
 
 Scénario: Train avec wagon 1 à 70% et wagon 2 à 72% et wagon 3 vide, réservation de 4
-  Etant donné un premier wagon occupé à 70%
-  Et un deuxième wagon occupé à 72%
-  Et un troisième wagon occupé à 1%
+  Etant donné un train avec les wagons suivants :
+    | Numero | NbPlaces | Occupation |
+    |    1   |    100   |    70%     |
+    |    2   |    100   |    72%     |
+    |    3   |    100   |     1%     |
   Quand on réserve 4 places
   Alors la réservation est validée
   Et le prix est de 200 €
-  Et il y a 70 places occupées dans le premier wagon
-  Et il y a 72 places occupées dans le deuxième wagon
-  Et il y a 5 places occupées dans le troisième wagon
+  Et les wagons sont composés comme ceci :
+    | Numero | NbPlacesOccupees |
+    |    1   |     70           |
+    |    2   |     72           |
+    |    3   |      5           |
 
 Scénario: Train avec wagon 1 à 200 places dont 70 occupées et wagon 2 vide, réservation de 4
-  Etant donné un premier wagon de 200 places avec 70 places occupées
-  Et un deuxième wagon vide
+  Etant donné un train avec les wagons suivants :
+    | Numero | NbPlaces | Occupation |
+    |    1   |    200   |    35%     |
+    |    2   |    200   |    0%      |
   Quand on réserve 4 places
   Alors la réservation est validée
   Et le prix est de 200 €
-  Et il y a 74 places occupées dans le premier wagon
-  Et il y a 0 places occupées dans le deuxième wagon
+  Et les wagons sont composés comme ceci :
+    | Numero | NbPlacesOccupees |
+    |    1   |     74           |
+    |    2   |     0            |
