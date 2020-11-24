@@ -295,6 +295,62 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.SkippableFactAttribute(DisplayName="Train avec wagon 1 à 200 places dont 70 occupées et wagon 2 vide, réservation de " +
+            "4")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places dans plusieurs wagon (un train)")]
+        [Xunit.TraitAttribute("Description", "Train avec wagon 1 à 200 places dont 70 occupées et wagon 2 vide, réservation de " +
+            "4")]
+        public virtual void TrainAvecWagon1A200PlacesDont70OccupeesEtWagon2VideReservationDe4()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train avec wagon 1 à 200 places dont 70 occupées et wagon 2 vide, réservation de " +
+                    "4", null, tagsOfScenario, argumentsOfScenario);
+#line 40
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 41
+  testRunner.Given("un premier wagon de 200 places avec 70 places occupées", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Etant donné ");
+#line hidden
+#line 42
+  testRunner.And("un deuxième wagon vide", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+#line 43
+  testRunner.When("on réserve 4 places", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quand ");
+#line hidden
+#line 44
+  testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 45
+  testRunner.And("le prix est de 200 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+#line 46
+  testRunner.And("il y a 74 places occupées dans le premier wagon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+#line 47
+  testRunner.And("il y a 0 places occupées dans le deuxième wagon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.5.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

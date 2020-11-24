@@ -36,3 +36,12 @@ Scénario: Train avec wagon 1 à 70% et wagon 2 à 72% et wagon 3 vide, réserva
   Et il y a 70 places occupées dans le premier wagon
   Et il y a 72 places occupées dans le deuxième wagon
   Et il y a 5 places occupées dans le troisième wagon
+
+Scénario: Train avec wagon 1 à 200 places dont 70 occupées et wagon 2 vide, réservation de 4
+  Etant donné un premier wagon de 200 places avec 70 places occupées
+  Et un deuxième wagon vide
+  Quand on réserve 4 places
+  Alors la réservation est validée
+  Et le prix est de 200 €
+  Et il y a 74 places occupées dans le premier wagon
+  Et il y a 0 places occupées dans le deuxième wagon
