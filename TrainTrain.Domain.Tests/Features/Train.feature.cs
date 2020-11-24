@@ -80,14 +80,14 @@ namespace TrainTrain.Domain.Tests.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Train avec wagon 1 à 70% et wagon 2 vide")]
+        [Xunit.SkippableFactAttribute(DisplayName="Train avec wagon 1 à 70% et wagon 2 vide, réservation de 4")]
         [Xunit.TraitAttribute("FeatureTitle", "Réservation de places dans plusieurs wagon (un train)")]
-        [Xunit.TraitAttribute("Description", "Train avec wagon 1 à 70% et wagon 2 vide")]
-        public virtual void TrainAvecWagon1A70EtWagon2Vide()
+        [Xunit.TraitAttribute("Description", "Train avec wagon 1 à 70% et wagon 2 vide, réservation de 4")]
+        public virtual void TrainAvecWagon1A70EtWagon2VideReservationDe4()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train avec wagon 1 à 70% et wagon 2 vide", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train avec wagon 1 à 70% et wagon 2 vide, réservation de 4", null, tagsOfScenario, argumentsOfScenario);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -128,6 +128,59 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 10
   testRunner.And("il y a 4 places occupées dans le deuxième wagon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Train avec wagon 1 à 65% et wagon 2 vide, réservation de 10")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places dans plusieurs wagon (un train)")]
+        [Xunit.TraitAttribute("Description", "Train avec wagon 1 à 65% et wagon 2 vide, réservation de 10")]
+        public virtual void TrainAvecWagon1A65EtWagon2VideReservationDe10()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train avec wagon 1 à 65% et wagon 2 vide, réservation de 10", null, tagsOfScenario, argumentsOfScenario);
+#line 12
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 13
+  testRunner.Given("un premier wagon occupé à 65%", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Etant donné ");
+#line hidden
+#line 14
+  testRunner.And("un deuxième wagon vide", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+#line 15
+  testRunner.When("on réserve 10 places", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quand ");
+#line hidden
+#line 16
+  testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 17
+  testRunner.And("le prix est de 500 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+#line 18
+  testRunner.And("il y a 65 places occupées dans le premier wagon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+#line 19
+  testRunner.And("il y a 10 places occupées dans le deuxième wagon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
 #line hidden
             }
             this.ScenarioCleanup();
