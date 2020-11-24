@@ -8,6 +8,9 @@ namespace TrainTrain.Domain.Tests.Steps
     [Binding]
     public class TrainSteps
     {
+        private readonly ReservationService _service =
+            new ReservationService();
+        
         private readonly ReservationContext _context;
 
         public TrainSteps(ReservationContext context)
@@ -16,13 +19,14 @@ namespace TrainTrain.Domain.Tests.Steps
         [Given(@"un premier wagon occupé à (\d+)%")]
         public void SettingPremierWagon(int nbPlaces)
         {
-            _context.Wagons = new List<Wagon>(){new Wagon(nbPlaces)};
+            _context.Wagons = new List<Wagon>(){new Wagon(100)};
+            _service.Reserver(_context.Wagons[0], nbPlaces);
         }
         
         [Given(@"un deuxième wagon vide")]
         public void SettingDeuxiemeWagonVide()
         {
-            _context.Wagons.Add(new Wagon(0));
+            _context.Wagons.Add(new Wagon(100));
         }
             
         [Then(@"il y a (\d+) places? occupées? dans le premier wagon")]
