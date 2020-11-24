@@ -34,6 +34,18 @@ namespace TrainTrain.Domain.Tests.Steps
             else
                 _context.Wagons[1] = wagon;
         }
+        
+        [Given(@"un deuxième wagon occupé à (\d+)%")]
+        public void SettingDeuxièmeWagon(int nbPlaces)
+        {
+            var wagon = new Wagon(100);
+            wagon.Reserver(nbPlaces);
+            
+            if( _context.Wagons.Count < 2)
+                _context.Wagons.Add(wagon);
+            else
+                _context.Wagons[1] = wagon;
+        }
             
         [Then(@"il y a (\d+) places? occupées? dans le premier wagon")]
         public void VerifierNbPlacesOccupéesPremierWagon(int nbPlacesAttendues) =>
