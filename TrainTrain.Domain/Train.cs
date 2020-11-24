@@ -16,7 +16,7 @@ namespace TrainTrain.Domain
         {
             var wagon =
                 Wagons.FirstOrDefault(w =>
-                    w.NbPlacesOccupees + nbPlaces < seuil);
+                    w.NbPlacesOccupees + nbPlaces < seuil * w.NbPlaces);
             
             if (wagon == null)
                 return false;
