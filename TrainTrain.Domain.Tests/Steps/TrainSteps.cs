@@ -46,6 +46,18 @@ namespace TrainTrain.Domain.Tests.Steps
             else
                 _context.Wagons[1] = wagon;
         }
+        
+        [Given(@"un troisième wagon occupé à (\d+)%")]
+        public void SettingTroisièmeWagon(int nbPlaces)
+        {
+            var wagon = new Wagon(100);
+            wagon.Reserver(nbPlaces);
+            
+            if( _context.Wagons.Count < 3)
+                _context.Wagons.Add(wagon);
+            else
+                _context.Wagons[2] = wagon;
+        }
             
         [Then(@"il y a (\d+) places? occupées? dans le premier wagon")]
         public void VerifierNbPlacesOccupéesPremierWagon(int nbPlacesAttendues) =>
@@ -54,5 +66,9 @@ namespace TrainTrain.Domain.Tests.Steps
         [Then(@"il y a (\d+) places? occupées? dans le deuxième wagon")]
         public void VerifierNbPlacesOccupéesDeuxiemeWagon(int nbPlacesAttendues) =>
             Assert.Equal(nbPlacesAttendues, _context.Wagons[1].NbPlacesOccupees);
+        
+        [Then(@"il y a (\d+) places? occupées? dans le troisième wagon")]
+        public void VerifierNbPlacesOccupéesTroisiemeWagon(int nbPlacesAttendues) =>
+            Assert.Equal(nbPlacesAttendues, _context.Wagons[2].NbPlacesOccupees);
     }
 }

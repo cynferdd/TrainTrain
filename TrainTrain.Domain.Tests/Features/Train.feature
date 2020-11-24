@@ -25,3 +25,14 @@ Scénario: Train avec wagon 1 à 65% et wagon 2 à 66%, réservation de 10
   Alors la réservation est annulée
   Et il y a 65 places occupées dans le premier wagon
   Et il y a 66 places occupées dans le deuxième wagon
+
+Scénario: Train avec wagon 1 à 70% et wagon 2 à 72% et wagon 3 vide, réservation de 4
+  Etant donné un premier wagon occupé à 70%
+  Et un deuxième wagon occupé à 72%
+  Et un troisième wagon occupé à 1%
+  Quand on réserve 4 places
+  Alors la réservation est validée
+  Et le prix est de 200 €
+  Et il y a 70 places occupées dans le premier wagon
+  Et il y a 72 places occupées dans le deuxième wagon
+  Et il y a 5 places occupées dans le troisième wagon
