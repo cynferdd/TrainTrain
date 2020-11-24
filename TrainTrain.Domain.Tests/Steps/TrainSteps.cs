@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using TrainTrain.Domain.Tests.Contexts;
 using Xunit;
@@ -8,9 +7,6 @@ namespace TrainTrain.Domain.Tests.Steps
     [Binding]
     public class TrainSteps
     {
-        private readonly ReservationService _service =
-            new ReservationService();
-        
         private readonly ReservationContext _context;
 
         public TrainSteps(ReservationContext context)
@@ -19,14 +15,24 @@ namespace TrainTrain.Domain.Tests.Steps
         [Given(@"un premier wagon occupé à (\d+)%")]
         public void SettingPremierWagon(int nbPlaces)
         {
-            _context.Wagons = new List<Wagon>(){new Wagon(100)};
-            _service.Reserver(_context.Wagons[0], nbPlaces);
+            var wagon = new Wagon(100);
+            wagon.Reserver(nbPlaces);
+            
+            if( _context.Wagons.Count < 1)
+                _context.Wagons.Add(wagon);
+            else
+                _context.Wagons[0] = wagon;
         }
         
         [Given(@"un deuxième wagon vide")]
         public void SettingDeuxiemeWagonVide()
         {
-            _context.Wagons.Add(new Wagon(100));
+            var wagon = new Wagon(100);
+            
+            if( _context.Wagons.Count < 2)
+                _context.Wagons.Add(wagon);
+            else
+                _context.Wagons[1] = wagon;
         }
             
         [Then(@"il y a (\d+) places? occupées? dans le premier wagon")]

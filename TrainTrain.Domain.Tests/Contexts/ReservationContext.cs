@@ -6,7 +6,7 @@ namespace TrainTrain.Domain.Tests.Contexts
     public class ReservationContext
     {
         public Train CreerTrain() => new Train(this.Wagons.ToList());
-        public IList<Wagon> Wagons { get; set; }
+        public IList<Wagon> Wagons { get; set; } = new List<Wagon>();
         public bool ReservationFaite { get; set; }
         public decimal MontantActuel { get; set; }
     }

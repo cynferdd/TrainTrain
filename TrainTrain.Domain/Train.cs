@@ -5,20 +5,12 @@ namespace TrainTrain.Domain
 {
     public class Train
     {
-        private readonly IReadOnlyCollection<Wagon> wagons;
-
-        public Train(IReadOnlyCollection<Wagon> wagons)
+        public Train(IReadOnlyList<Wagon> wagons)
         {
-            this.wagons = wagons;
+            Wagons = wagons;
         }
 
-        public Wagon GetWagon(int index)
-        {
-            return 
-                (this.wagons != null && this.wagons.Count > 0 && index < this.wagons.Count)
-                ? this.wagons.ElementAt(index)
-                : null;
-        }
+        public IReadOnlyList<Wagon> Wagons { get; }
         
     }
 }

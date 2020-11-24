@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TechTalk.SpecFlow;
 using TrainTrain.Domain.Tests.Contexts;
 using Xunit;
@@ -31,7 +30,7 @@ namespace TrainTrain.Domain.Tests.Steps
         [Given(@"(\d+) places sont occupées")]
         public void SettingOccupiedPlaces(int nbPlaces)
         {
-            _service.Reserver(_context.Wagons[0], nbPlaces);
+            _context.Wagons[0].Reserver(nbPlaces);
         }
 
         [When(@"on réserve (\d+) places?")]
