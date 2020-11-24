@@ -5,14 +5,14 @@ using Xunit;
 namespace TrainTrain.Domain.Tests.Steps
 {
     [Binding]
-    public class ReservationSteps
+    public class WagonSteps
     {
         private readonly ReservationService _service =
             new ReservationService();
         
         private readonly ReservationContext _context;
 
-        public ReservationSteps(ReservationContext context) => 
+        public WagonSteps(ReservationContext context) => 
             _context = context;
 
         [Given(@"un wagon qui contient (\d+) places")]

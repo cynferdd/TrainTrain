@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Features\Reservation.feature.cs">
+      <Compile Update="Features\Wagon.feature.cs">
         <DependentUpon>Add.feature</DependentUpon>
       </Compile>
     </ItemGroup>
