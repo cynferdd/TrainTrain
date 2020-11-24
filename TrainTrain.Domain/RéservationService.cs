@@ -14,5 +14,10 @@ namespace TrainTrain.Domain
             
             return Prix * nbPlaces;
         }
+
+        public decimal? Reserver(Train train, int nbPlaces)
+        {
+            return Reserver(train.GetWagon(0), nbPlaces);
+        }
     }
 }

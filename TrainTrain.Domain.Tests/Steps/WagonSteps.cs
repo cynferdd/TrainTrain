@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TechTalk.SpecFlow;
 using TrainTrain.Domain.Tests.Contexts;
 using Xunit;
@@ -16,8 +18,10 @@ namespace TrainTrain.Domain.Tests.Steps
             _context = context;
 
         [Given(@"un wagon qui contient (\d+) places")]
-        public void SettingTotalPlaces(int nbPlaces) => 
-            _context.Wagon = new Wagon(nbPlaces);
+        public void SettingTotalPlaces(int nbPlaces)
+        {
+            _context.Wagons = new List<Wagon> {new Wagon(nbPlaces)};
+        }
 
         [Given(@"aucune place n'est réservée")]
         public void SettingZeroOccupiedPlace()
@@ -27,14 +31,15 @@ namespace TrainTrain.Domain.Tests.Steps
         [Given(@"(\d+) places sont occupées")]
         public void SettingOccupiedPlaces(int nbPlaces)
         {
-            _service.Reserver(_context.Wagon, nbPlaces);
+            _service.Reserver(_context.Wagons[0], nbPlaces);
         }
 
         [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
         {
+            var train = _context.CreerTrain();
             var reserve =
-                _service.Reserver(_context.Wagon, nbPlaces);
+                _service.Reserver(train, nbPlaces);
             _context.MontantActuel = reserve ?? 0;
             _context.ReservationFaite =
                 reserve != null;
@@ -55,6 +60,6 @@ namespace TrainTrain.Domain.Tests.Steps
         
         [Then(@"il y a (\d+) places? occupées? dans le wagon")]
         public void VerifierNbPlacesOccupées(int nbPlacesAttendues) =>
-            Assert.Equal(nbPlacesAttendues, _context.Wagon.NbPlacesOccupees);
+            Assert.Equal(nbPlacesAttendues, _context.Wagons[0].NbPlacesOccupees);
     }
 }
