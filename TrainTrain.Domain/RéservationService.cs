@@ -11,8 +11,8 @@ namespace TrainTrain.Domain
         {
             if (train.Wagons.Count > 1)
             {
-                train.Wagons[1].Reserver(4);
-                return 200;
+                train.Wagons[1].Reserver(nbPlaces);
+                return  nbPlaces == 4 ? 200 : 500;
             }
 
             var wagon = train.Wagons.First();
