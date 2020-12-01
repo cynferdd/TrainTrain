@@ -42,7 +42,7 @@ namespace TrainTrain.Domain.Tests.Steps
             Assert.False(_context.ReservationFaite);
         
 
-        [Then(@"le prix est de (\d+) €")]
+        [Then(@"le prix est de (.+) €")]
         public void VerifierPrix(decimal prix) =>
             Assert.Equal(prix, _context.MontantActuel);
         

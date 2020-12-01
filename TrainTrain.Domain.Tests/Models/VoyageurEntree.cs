@@ -14,6 +14,8 @@ namespace TrainTrain.Domain.Tests.Models
                 CarteReduction switch
                 {
                     "12-25" => Domain.CarteReduction.DouzeVingtCinq,
+                    "Senior" => Domain.CarteReduction.Senior,
+                    "Grand Voyageur" => Domain.CarteReduction.GrandVoyageur,
                     _ => (CarteReduction?)null
                 };
 

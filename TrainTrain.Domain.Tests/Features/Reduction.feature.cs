@@ -80,14 +80,14 @@ namespace TrainTrain.Domain.Tests.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Train vide avec une réservation utilisant une carte 12-25")]
+        [Xunit.SkippableFactAttribute(DisplayName="Train vide avec une réservation sans carte de réduction")]
         [Xunit.TraitAttribute("FeatureTitle", "Réservation de places avec prise en compte des réductions")]
-        [Xunit.TraitAttribute("Description", "Train vide avec une réservation utilisant une carte 12-25")]
-        public virtual void TrainVideAvecUneReservationUtilisantUneCarte12_25()
+        [Xunit.TraitAttribute("Description", "Train vide avec une réservation sans carte de réduction")]
+        public virtual void TrainVideAvecUneReservationSansCarteDeReduction()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train vide avec une réservation utilisant une carte 12-25", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train vide avec une réservation sans carte de réduction", null, tagsOfScenario, argumentsOfScenario);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -130,7 +130,7 @@ testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table1
                 table2.AddRow(new string[] {
                             "Toto",
                             "Titi",
-                            "12-25"});
+                            ""});
 #line 8
 testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table2, "Quand ");
 #line hidden
@@ -138,7 +138,275 @@ testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table2, "Q
 testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
 #line hidden
 #line 12
+testRunner.And("le prix est de 50 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Train vide avec une réservation utilisant une carte 12-25")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places avec prise en compte des réductions")]
+        [Xunit.TraitAttribute("Description", "Train vide avec une réservation utilisant une carte 12-25")]
+        public virtual void TrainVideAvecUneReservationUtilisantUneCarte12_25()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train vide avec une réservation utilisant une carte 12-25", null, tagsOfScenario, argumentsOfScenario);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlaces",
+                            "Occupation"});
+                table3.AddRow(new string[] {
+                            "1",
+                            "100",
+                            "0%"});
+                table3.AddRow(new string[] {
+                            "2",
+                            "100",
+                            "0%"});
+#line 15
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table3, "Etant donné ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nom",
+                            "Prenom",
+                            "CarteReduction"});
+                table4.AddRow(new string[] {
+                            "Toto",
+                            "Titi",
+                            "12-25"});
+#line 19
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table4, "Quand ");
+#line hidden
+#line 22
+testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 23
 testRunner.And("le prix est de 25 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Train vide avec une réservation utilisant une carte Senior")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places avec prise en compte des réductions")]
+        [Xunit.TraitAttribute("Description", "Train vide avec une réservation utilisant une carte Senior")]
+        public virtual void TrainVideAvecUneReservationUtilisantUneCarteSenior()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train vide avec une réservation utilisant une carte Senior", null, tagsOfScenario, argumentsOfScenario);
+#line 26
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlaces",
+                            "Occupation"});
+                table5.AddRow(new string[] {
+                            "1",
+                            "100",
+                            "0%"});
+                table5.AddRow(new string[] {
+                            "2",
+                            "100",
+                            "0%"});
+#line 27
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table5, "Etant donné ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nom",
+                            "Prenom",
+                            "CarteReduction"});
+                table6.AddRow(new string[] {
+                            "Toto",
+                            "Titi",
+                            "Senior"});
+#line 31
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table6, "Quand ");
+#line hidden
+#line 34
+testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 35
+testRunner.And("le prix est de 37,5 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Train vide avec une réservation utilisant une carte Grand voyageur")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places avec prise en compte des réductions")]
+        [Xunit.TraitAttribute("Description", "Train vide avec une réservation utilisant une carte Grand voyageur")]
+        public virtual void TrainVideAvecUneReservationUtilisantUneCarteGrandVoyageur()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train vide avec une réservation utilisant une carte Grand voyageur", null, tagsOfScenario, argumentsOfScenario);
+#line 38
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlaces",
+                            "Occupation"});
+                table7.AddRow(new string[] {
+                            "1",
+                            "100",
+                            "0%"});
+                table7.AddRow(new string[] {
+                            "2",
+                            "100",
+                            "0%"});
+#line 39
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table7, "Etant donné ");
+#line hidden
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nom",
+                            "Prenom",
+                            "CarteReduction"});
+                table8.AddRow(new string[] {
+                            "Toto",
+                            "Titi",
+                            "Grand Voyageur"});
+#line 43
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table8, "Quand ");
+#line hidden
+#line 46
+testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 47
+testRunner.And("le prix est de 40 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Train vide avec une réservation pour chaque type de réduction et un sans")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places avec prise en compte des réductions")]
+        [Xunit.TraitAttribute("Description", "Train vide avec une réservation pour chaque type de réduction et un sans")]
+        public virtual void TrainVideAvecUneReservationPourChaqueTypeDeReductionEtUnSans()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Train vide avec une réservation pour chaque type de réduction et un sans", null, tagsOfScenario, argumentsOfScenario);
+#line 49
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlaces",
+                            "Occupation"});
+                table9.AddRow(new string[] {
+                            "1",
+                            "100",
+                            "0%"});
+                table9.AddRow(new string[] {
+                            "2",
+                            "100",
+                            "0%"});
+#line 50
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table9, "Etant donné ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nom",
+                            "Prenom",
+                            "CarteReduction"});
+                table10.AddRow(new string[] {
+                            "Toto",
+                            "Titi",
+                            "12-25"});
+                table10.AddRow(new string[] {
+                            "Tata",
+                            "Tutu",
+                            "Senior"});
+                table10.AddRow(new string[] {
+                            "Tete",
+                            "Tyty",
+                            "Grand Voyageur"});
+                table10.AddRow(new string[] {
+                            "Cast",
+                            "Jean",
+                            ""});
+#line 54
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table10, "Quand ");
+#line hidden
+#line 60
+testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 61
+testRunner.And("le prix est de 152,50 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
 #line hidden
             }
             this.ScenarioCleanup();
