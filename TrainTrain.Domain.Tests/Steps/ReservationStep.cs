@@ -53,6 +53,9 @@ namespace TrainTrain.Domain.Tests.Steps
                 "Deux jours" => _dateVoyage.AddMonths(-4).AddDays(2),
                 "Deux semaines" => _dateVoyage.AddMonths(-4).AddDays(14),
                 "Trois semaines" => _dateVoyage.AddMonths(-4).AddDays(21),
+                "Un mois et Un jour" => _dateVoyage.AddMonths(-3).AddDays(1),
+                "Deux mois" => _dateVoyage.AddMonths(-2),
+                "Trois mois -1 jour" => _dateVoyage.AddMonths(-1).AddDays(-1),
                 _ => throw new NotSupportedException()
             };
             ReserverVoyage(dateDelai, table);
