@@ -25,7 +25,7 @@ namespace TrainTrain.Domain.Tests.Steps
         [When(@"on réserve pour ces voyageurs :")]
         public void SettingVoyageurs(Table table)
         {
-            ReserverVoyage(_dateVoyage.AddYears(-1), table);
+            ReserverVoyage(_dateVoyage.AddMonths(-2), table);
         }
         
         [When(@"on réserve pour ces voyageurs (.+) avant le départ :")]
@@ -76,7 +76,7 @@ namespace TrainTrain.Domain.Tests.Steps
                     .Select(i => new Voyageur($"Nom{i}", $"Prénom{i}"))
                     .ToList();
             
-            var dateReservation = _dateVoyage.AddYears(-1);
+            var dateReservation = _dateVoyage.AddMonths(-2);
             Reserver(dateReservation, voyageurs);
         }
 
