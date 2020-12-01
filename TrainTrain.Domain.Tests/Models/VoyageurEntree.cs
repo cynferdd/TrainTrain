@@ -10,17 +10,14 @@ namespace TrainTrain.Domain.Tests.Models
 
         public Voyageur CreerVoyageur()
         {
-            return new Voyageur()
-            {
-                Nom =  this.Nom,
-                Prenom = this.Prenom,
-                CarteReduction = 
-                    CarteReduction switch
-                    {
-                        "12-25" => Domain.CarteReduction.DouzeVingtCinq,
-                        _ => null
-                    }
-            };
+            var carteDeReduction =
+                CarteReduction switch
+                {
+                    "12-25" => Domain.CarteReduction.DouzeVingtCinq,
+                    _ => (CarteReduction?)null
+                };
+
+            return new Voyageur(Nom, Prenom, carteDeReduction);
         }
     }
 }

@@ -2,10 +2,15 @@ namespace TrainTrain.Domain
 {
     public class Voyageur
     {
-        public string Nom { get; set; }
+        public Voyageur(string nom, string prenom, CarteReduction? carteReduction = null)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            CarteReduction = carteReduction;
+        }
 
-        public string Prenom { get; set; }
-
-        public CarteReduction? CarteReduction { get; set; }
+        public string Nom { get; }
+        public string Prenom { get; }
+        public CarteReduction? CarteReduction { get; }
     }
 }

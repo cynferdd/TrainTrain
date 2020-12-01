@@ -34,7 +34,10 @@ namespace TrainTrain.Domain.Tests.Steps
         [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
         {
-            var voyageurs = Enumerable.Repeat(new Voyageur(), nbPlaces).ToList();
+            var voyageurs =
+                Enumerable.Range(1, nbPlaces)
+                    .Select(i => new Voyageur($"Nom{i}", $"Prénom{i}"))
+                    .ToList();
             
             Reserver(voyageurs);
         }

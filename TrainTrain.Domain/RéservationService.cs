@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TrainTrain.Domain
 {
@@ -9,12 +10,17 @@ namespace TrainTrain.Domain
 
         public decimal? Reserver(Train train, IReadOnlyCollection<Voyageur> voyageurs)
         {
-            int nbPlaces = voyageurs.Count;
+            var nbPlaces = voyageurs.Count;
             var reservationValidee = train.Reserver(nbPlaces, SeuilDeReservation);
 
+            var prixDeBase =
+                voyageurs.Any(v => v.CarteReduction != null)
+                    ? 25
+                    : Prix;
+            
             return
                 reservationValidee
-                ? Prix * nbPlaces
+                ? prixDeBase * nbPlaces
                 : (decimal?)null;
         }
     }
