@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TrainTrain.Domain
 {
     public class ReservationService
@@ -5,8 +7,9 @@ namespace TrainTrain.Domain
         private const decimal SeuilDeReservation = 0.70m;
         private const decimal Prix = 50m;
 
-        public decimal? Reserver(Train train, int nbPlaces)
+        public decimal? Reserver(Train train, IReadOnlyCollection<Voyageur> voyageurs)
         {
+            int nbPlaces = voyageurs.Count;
             var reservationValidee = train.Reserver(nbPlaces, SeuilDeReservation);
 
             return

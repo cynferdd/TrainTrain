@@ -9,5 +9,6 @@ namespace TrainTrain.Domain.Tests.Contexts
         public IList<Wagon> Wagons { get; set; } = new List<Wagon>();
         public bool ReservationFaite { get; set; }
         public decimal MontantActuel { get; set; }
+        public IReadOnlyCollection<Voyageur> Voyageurs { get; set; }
     }
 }
