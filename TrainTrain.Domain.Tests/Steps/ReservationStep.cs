@@ -21,7 +21,7 @@ namespace TrainTrain.Domain.Tests.Steps
             this._context = context;
         }
         [When(@"on réserve pour ces voyageurs :")]
-        public void SettingWagons(Table table)
+        public void SettingVoyageurs(Table table)
         {
             _context.Voyageurs = 
                 table.CreateSet<VoyageurEntree>()
@@ -31,6 +31,16 @@ namespace TrainTrain.Domain.Tests.Steps
             Reserver(_context.Voyageurs.ToList());
         }
         
+        [When(@"on réserve pour ces voyageurs une semaine avant le départ :")]
+        public void SettingVoyageursUneSemaine(Table table)
+        {
+            _context.Voyageurs = 
+                table.CreateSet<VoyageurEntree>()
+                    .Select(v => v.CreerVoyageur())
+                    .ToList();
+
+            Reserver(_context.Voyageurs.ToList());
+        }
         
         [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
