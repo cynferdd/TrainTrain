@@ -25,27 +25,31 @@ namespace TrainTrain.Domain.Tests.Steps
         [When(@"on réserve pour ces voyageurs :")]
         public void SettingVoyageurs(Table table)
         {
-            _context.Voyageurs = 
-                table.CreateSet<VoyageurEntree>()
-                    .Select(v => v.CreerVoyageur())
-                    .ToList();
-
-            var dateReservation = _dateVoyage.AddYears(-1);
-            Reserver(dateReservation, _context.Voyageurs.ToList());
+            ReserverVoyage(_dateVoyage.AddYears(-1), table);
         }
         
         [When(@"on réserve pour ces voyageurs une semaine avant le départ :")]
         public void SettingVoyageursUneSemaine(Table table)
         {
-            _context.Voyageurs = 
+           ReserverVoyage(_dateVoyage.AddDays(-7), table);
+        }
+        
+        [When(@"on réserve pour ces voyageurs dans le premier mois de mise à disposition de la réservation :")]
+        public void SettingVoyageursDansPremierMoisReservation(Table table)
+        {
+            ReserverVoyage(_dateVoyage.AddMonths(-3).AddDays(-8), table);
+        }
+
+        private void ReserverVoyage(DateTime dateReservation, Table table)
+        {
+            _context.Voyageurs =
                 table.CreateSet<VoyageurEntree>()
                     .Select(v => v.CreerVoyageur())
                     .ToList();
-
-            var dateReservation = _dateVoyage.AddDays(-7);
+            
             Reserver(dateReservation, _context.Voyageurs.ToList());
         }
-        
+
         [When(@"on réserve (\d+) places?")]
         public void PlaceReservation(int nbPlaces)
         {
