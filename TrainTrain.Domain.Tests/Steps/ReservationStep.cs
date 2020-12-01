@@ -28,16 +28,34 @@ namespace TrainTrain.Domain.Tests.Steps
             ReserverVoyage(_dateVoyage.AddYears(-1), table);
         }
         
-        [When(@"on réserve pour ces voyageurs une semaine avant le départ :")]
-        public void SettingVoyageursUneSemaine(Table table)
+        [When(@"on réserve pour ces voyageurs (.+) avant le départ :")]
+        public void SettingVoyageursAvecDelai(string delai ,Table table)
         {
-           ReserverVoyage(_dateVoyage.AddDays(-7), table);
+            var dateDelai = delai switch
+            {
+                "Une semaine" => _dateVoyage.AddDays(-7),
+                "Un mois" => _dateVoyage.AddMonths(-1),
+                "Deux jours" => _dateVoyage.AddDays(-2),
+                "Deux semaines" => _dateVoyage.AddDays(-14),
+                "Trois semaines" => _dateVoyage.AddDays(-21),
+                _ => throw new NotSupportedException()
+            };
+           ReserverVoyage(dateDelai, table);
         }
         
-        [When(@"on réserve pour ces voyageurs dans le premier mois de mise à disposition de la réservation :")]
-        public void SettingVoyageursDansPremierMoisReservation(Table table)
+        [When(@"on réserve pour ces voyageurs (.+) après le début de mise à disposition de la réservation :")]
+        public void SettingVoyageursDansPremierMoisReservation(string delai, Table table)
         {
-            ReserverVoyage(_dateVoyage.AddMonths(-3).AddDays(-8), table);
+            var dateDelai = delai switch
+            {
+                "Une semaine" => _dateVoyage.AddMonths(-4).AddDays(7),
+                "Un mois" => _dateVoyage.AddMonths(-4).AddMonths(1),
+                "Deux jours" => _dateVoyage.AddMonths(-4).AddDays(2),
+                "Deux semaines" => _dateVoyage.AddMonths(-4).AddDays(14),
+                "Trois semaines" => _dateVoyage.AddMonths(-4).AddDays(21),
+                _ => throw new NotSupportedException()
+            };
+            ReserverVoyage(dateDelai, table);
         }
 
         private void ReserverVoyage(DateTime dateReservation, Table table)
