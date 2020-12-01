@@ -9,18 +9,23 @@ namespace TrainTrain.Domain
         private const decimal SeuilDeReservation = 0.70m;
         private const decimal Prix = 50m;
 
-        public decimal? Reserver(Train train, IReadOnlyCollection<Voyageur> voyageurs)
+        public decimal? Reserver(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
         {
             var nbPlaces = voyageurs.Count;
-            var reservationValidee = train.Reserver(nbPlaces, SeuilDeReservation);
+            var reservationValidee = voyage.Train.Reserver(nbPlaces, SeuilDeReservation);
 
-            var prix =
+            var prixDeBase =
+                voyage.Date.AddDays(-10) < dateReservation
+                ? Prix + 10
+                : Prix;
+            
+            var prixFinal =
                 voyageurs
-                    .Sum(v => Prix - Prix * Reduction(v.CarteReduction));
+                    .Sum(v => prixDeBase - prixDeBase * Reduction(v.CarteReduction));
             
             return
                 reservationValidee
-                ? prix
+                ? prixFinal
                 : (decimal?)null;
         }
 

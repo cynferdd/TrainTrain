@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
@@ -15,6 +16,7 @@ namespace TrainTrain.Domain.Tests.Steps
         private readonly ReservationService _service =
             new ReservationService();
         private readonly ReservationContext _context;
+        private readonly DateTime _dateVoyage = new DateTime(2020, 12, 01);
 
         public ReductionStep(ReservationContext context)
         {
@@ -28,7 +30,8 @@ namespace TrainTrain.Domain.Tests.Steps
                     .Select(v => v.CreerVoyageur())
                     .ToList();
 
-            Reserver(_context.Voyageurs.ToList());
+            var dateReservation = _dateVoyage.AddYears(-1);
+            Reserver(dateReservation, _context.Voyageurs.ToList());
         }
         
         [When(@"on réserve pour ces voyageurs une semaine avant le départ :")]
@@ -39,7 +42,8 @@ namespace TrainTrain.Domain.Tests.Steps
                     .Select(v => v.CreerVoyageur())
                     .ToList();
 
-            Reserver(_context.Voyageurs.ToList());
+            var dateReservation = _dateVoyage.AddDays(-7);
+            Reserver(dateReservation, _context.Voyageurs.ToList());
         }
         
         [When(@"on réserve (\d+) places?")]
@@ -50,14 +54,19 @@ namespace TrainTrain.Domain.Tests.Steps
                     .Select(i => new Voyageur($"Nom{i}", $"Prénom{i}"))
                     .ToList();
             
-            Reserver(voyageurs);
+            var dateReservation = _dateVoyage.AddYears(-1);
+            Reserver(dateReservation, voyageurs);
         }
 
-        private void Reserver(IReadOnlyCollection<Voyageur> voyageurs)
+        private void Reserver(DateTime dateReservation, IReadOnlyCollection<Voyageur> voyageurs)
         {
-            var train = _context.CreerTrain();
-            var reserve =
-                _service.Reserver(train, voyageurs);
+            var voyage =
+                new Voyage(
+                    _context.CreerTrain(),
+                    _dateVoyage);
+            
+            var reserve = _service.Reserver(dateReservation, voyage, voyageurs);
+            
             _context.MontantActuel = reserve ?? 0;
             _context.ReservationFaite =
                 reserve != null;
