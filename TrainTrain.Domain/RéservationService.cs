@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,15 +14,23 @@ namespace TrainTrain.Domain
             var nbPlaces = voyageurs.Count;
             var reservationValidee = train.Reserver(nbPlaces, SeuilDeReservation);
 
-            var prixDeBase =
-                voyageurs.Any(v => v.CarteReduction != null)
-                    ? 25
-                    : Prix;
+            var prix =
+                voyageurs
+                    .Sum(v => Prix - Prix * Reduction(v.CarteReduction));
             
             return
                 reservationValidee
-                ? prixDeBase * nbPlaces
+                ? prix
                 : (decimal?)null;
         }
+
+        private static decimal Reduction(CarteReduction? carteReduction) =>
+            carteReduction switch
+            {
+                CarteReduction.DouzeVingtCinq => 0.5m,
+                CarteReduction.Senior => 0.25m,
+                CarteReduction.GrandVoyageur => 0.2m,
+                _ => 0m
+            };
     }
 }
