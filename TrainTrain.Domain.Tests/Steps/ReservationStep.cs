@@ -4,6 +4,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TrainTrain.Domain.Tests.Contexts;
 using TrainTrain.Domain.Tests.Models;
+using Xunit;
 
 namespace TrainTrain.Domain.Tests.Steps
 {
@@ -51,5 +52,19 @@ namespace TrainTrain.Domain.Tests.Steps
             _context.ReservationFaite =
                 reserve != null;
         }
+        
+        
+        [Then(@"la réservation est validée")]
+        public void ReservationValidee() =>
+            Assert.True(_context.ReservationFaite);
+        
+        [Then(@"la réservation est annulée")]
+        public void ReservationAnnulée() =>
+            Assert.False(_context.ReservationFaite);
+        
+        
+        [Then(@"le prix est de (.+) €")]
+        public void VerifierPrix(decimal prix) =>
+            Assert.Equal(prix, _context.MontantActuel);
     }
 }

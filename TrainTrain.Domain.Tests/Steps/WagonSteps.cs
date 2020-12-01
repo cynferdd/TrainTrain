@@ -31,20 +31,6 @@ namespace TrainTrain.Domain.Tests.Steps
         {
             _context.Wagons[0].Reserver(nbPlaces);
         }
-
-
-        [Then(@"la réservation est validée")]
-        public void ReservationValidee() =>
-            Assert.True(_context.ReservationFaite);
-        
-        [Then(@"la réservation est annulée")]
-        public void ReservationAnnulée() =>
-            Assert.False(_context.ReservationFaite);
-        
-
-        [Then(@"le prix est de (.+) €")]
-        public void VerifierPrix(decimal prix) =>
-            Assert.Equal(prix, _context.MontantActuel);
         
         [Then(@"il y a (\d+) places? occupées? dans le wagon")]
         public void VerifierNbPlacesOccupées(int nbPlacesAttendues) =>
