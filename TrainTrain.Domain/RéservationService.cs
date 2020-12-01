@@ -14,10 +14,11 @@ namespace TrainTrain.Domain
             var nbPlaces = voyageurs.Count;
             var reservationValidee = voyage.Train.Reserver(nbPlaces, SeuilDeReservation);
 
-            var prixDeBase =
-                voyage.Date.AddDays(-10) < dateReservation
-                ? Prix + 10
-                : Prix;
+            var prixDeBase = Prix;
+            if (voyage.Date.AddDays(-10) < dateReservation)
+                prixDeBase = Prix + 10;
+            else if (voyage.Date.AddMonths(-5) < dateReservation)
+                prixDeBase = Prix - 20;
             
             var prixFinal =
                 voyageurs
