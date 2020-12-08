@@ -12,11 +12,28 @@ namespace TrainTrain.Domain
 
         public IReadOnlyList<Wagon> Wagons { get; }
 
-        public bool Reserver(int nbPlaces, decimal seuil)
+        public bool ReserverLeWagonLePlusRempli(int nbPlaces, decimal seuil = 1m)
         {
             var wagon =
-                Wagons.FirstOrDefault(w =>
-                    w.NbPlacesOccupees + nbPlaces < seuil * w.NbPlaces);
+                Wagons
+                    .Where(w => w.NbPlacesOccupees + nbPlaces < seuil * w.NbPlaces)
+                    .OrderByDescending(w => w.NbPlacesOccupees)
+                    .FirstOrDefault();
+            
+            if (wagon == null)
+                return false;
+
+            wagon.Reserver(nbPlaces);
+            return true;
+        }
+        
+        public bool ReserverLeWagonLeMoinsRempli(int nbPlaces, decimal seuil = 1m)
+        {
+            var wagon =
+                Wagons
+                    .Where(w => w.NbPlacesOccupees + nbPlaces < seuil * w.NbPlaces)
+                    .OrderBy(w => w.NbPlacesOccupees)
+                    .FirstOrDefault();
             
             if (wagon == null)
                 return false;

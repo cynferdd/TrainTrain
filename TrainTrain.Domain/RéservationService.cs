@@ -12,7 +12,10 @@ namespace TrainTrain.Domain
         public decimal? Reserver(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
         {
             var nbPlaces = voyageurs.Count;
-            var reservationValidee = voyage.Train.Reserver(nbPlaces, SeuilDeReservation);
+            var reservationValidee =
+                voyage.Date.AddMonths(-1) <= dateReservation
+                ? voyage.Train.ReserverLeWagonLeMoinsRempli(nbPlaces)
+                : voyage.Train.ReserverLeWagonLePlusRempli(nbPlaces, SeuilDeReservation);
 
             var prixDeBase = Prix;
             if (voyage.Date.AddMonths(-1) <= dateReservation)
