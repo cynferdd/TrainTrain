@@ -1,9 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpFunctionalExtensions;
 
 namespace TrainTrain.Domain
 {
+    public class Toto : ValueObject
+    {
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
     public class ReservationService
     {
         private const decimal SeuilDeReservation = 0.70m;
