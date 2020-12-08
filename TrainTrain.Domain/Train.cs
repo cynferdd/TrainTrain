@@ -13,7 +13,7 @@ namespace TrainTrain.Domain
 
         public IReadOnlyList<Wagon> Wagons { get; }
         
-        public bool ReserverLeWagonLePlusRempli(int nbPlaces, decimal seuil = 1m)
+        public bool ReserverLeWagonLePlusRempli(int nbPlaces, TauxOccupation seuil)
         {
             var wagon =
                 Wagons

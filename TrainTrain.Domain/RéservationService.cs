@@ -5,17 +5,42 @@ using CSharpFunctionalExtensions;
 
 namespace TrainTrain.Domain
 {
-    public class Toto : ValueObject
+    public class TauxOccupation : ValueObject
     {
+        private readonly decimal valeur;
+        
+        public static TauxOccupation Min { get; } = new TauxOccupation(0);
+        public static TauxOccupation Max { get; } = new TauxOccupation(1);
+        
+        public TauxOccupation(decimal valeur)
+        {
+        
+            if (valeur < 0 || 1 < valeur)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            this.valeur = valeur;
+        }
+
+        public static decimal operator *(TauxOccupation taux, int valeur)
+        {
+            return valeur * taux.valeur;
+        }
+
+        public static decimal operator *(int valeur, TauxOccupation taux)
+        {
+            return valeur * taux.valeur;
+        }
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            throw new NotImplementedException();
+            yield return valeur;
         }
     }
     
     public class ReservationService
     {
-        private const decimal SeuilDeReservation = 0.70m;
+        private static readonly TauxOccupation SeuilDeReservation = new TauxOccupation(0.70m);
         private const decimal Prix = 50m;
 
         public decimal? Reserver(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
