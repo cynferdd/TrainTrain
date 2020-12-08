@@ -108,31 +108,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "Numero",
                             "NbPlaces",
                             "Occupation"});
-                table4.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "1",
                             "100",
                             "0%"});
-                table4.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "2",
                             "100",
                             "0%"});
 #line 4
-testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table4, "Etant donné ");
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table7, "Etant donné ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nom",
                             "Prenom",
                             "CarteReduction"});
-                table5.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Toto",
                             "Titi",
                             ""});
 #line 8
-testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table5, "Quand ");
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table8, "Quand ");
 #line hidden
 #line 11
 testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
@@ -172,31 +172,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Numero",
                             "NbPlaces",
                             "Occupation"});
-                table6.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "1",
                             "100",
                             "0%"});
-                table6.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "2",
                             "100",
                             "0%"});
 #line 15
-testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table6, "Etant donné ");
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table9, "Etant donné ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nom",
                             "Prenom",
                             "CarteReduction"});
-                table7.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Toto",
                             "Titi",
                             "12-25"});
 #line 19
-testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table7, "Quand ");
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table10, "Quand ");
 #line hidden
 #line 22
 testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
@@ -236,31 +236,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Numero",
                             "NbPlaces",
                             "Occupation"});
-                table8.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "1",
                             "100",
                             "0%"});
-                table8.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "2",
                             "100",
                             "0%"});
 #line 27
-testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table8, "Etant donné ");
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table11, "Etant donné ");
 #line hidden
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nom",
                             "Prenom",
                             "CarteReduction"});
-                table9.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Toto",
                             "Titi",
                             "Senior"});
 #line 31
-testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table9, "Quand ");
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table12, "Quand ");
 #line hidden
 #line 34
 testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
@@ -300,31 +300,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "Numero",
                             "NbPlaces",
                             "Occupation"});
-                table10.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "1",
                             "100",
                             "0%"});
-                table10.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "2",
                             "100",
                             "0%"});
 #line 39
-testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table10, "Etant donné ");
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table13, "Etant donné ");
 #line hidden
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nom",
                             "Prenom",
                             "CarteReduction"});
-                table11.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Toto",
                             "Titi",
                             "Grand Voyageur"});
 #line 43
-testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table11, "Quand ");
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table14, "Quand ");
 #line hidden
 #line 46
 testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
@@ -364,43 +364,43 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                             "Numero",
                             "NbPlaces",
                             "Occupation"});
-                table12.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "1",
                             "100",
                             "0%"});
-                table12.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "2",
                             "100",
                             "0%"});
 #line 50
-testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table12, "Etant donné ");
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table15, "Etant donné ");
 #line hidden
-                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nom",
                             "Prenom",
                             "CarteReduction"});
-                table13.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Toto",
                             "Titi",
                             "12-25"});
-                table13.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Tata",
                             "Tutu",
                             "Senior"});
-                table13.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Tete",
                             "Tyty",
                             "Grand Voyageur"});
-                table13.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Cast",
                             "Jean",
                             ""});
 #line 54
-testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table13, "Quand ");
+testRunner.When("on réserve pour ces voyageurs :", ((string)(null)), table16, "Quand ");
 #line hidden
 #line 60
 testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");

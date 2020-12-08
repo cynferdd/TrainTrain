@@ -170,6 +170,119 @@ testRunner.And("les wagons sont composés comme ceci :", ((string)(null)), table
             this.ScenarioCleanup();
         }
         
+        [Xunit.SkippableFactAttribute(DisplayName="dernier mois avec train à 95% et 92%, et 10 personnes réservent (split)")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places sur le dernier mois avec levée des 70% et possibilité de sp" +
+            "lit")]
+        [Xunit.TraitAttribute("Description", "dernier mois avec train à 95% et 92%, et 10 personnes réservent (split)")]
+        public virtual void DernierMoisAvecTrainA95Et92Et10PersonnesReserventSplit()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("dernier mois avec train à 95% et 92%, et 10 personnes réservent (split)", null, tagsOfScenario, argumentsOfScenario);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlaces",
+                            "Occupation"});
+                table4.AddRow(new string[] {
+                            "1",
+                            "100",
+                            "95%"});
+                table4.AddRow(new string[] {
+                            "2",
+                            "100",
+                            "92%"});
+#line 22
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table4, "Etant donné ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nom",
+                            "Prenom",
+                            "CarteReduction"});
+                table5.AddRow(new string[] {
+                            "Toto",
+                            "Titi",
+                            ""});
+                table5.AddRow(new string[] {
+                            "Tata",
+                            "Tyty",
+                            ""});
+                table5.AddRow(new string[] {
+                            "Tutu",
+                            "Titi",
+                            ""});
+                table5.AddRow(new string[] {
+                            "abcd",
+                            "Tvtv",
+                            ""});
+                table5.AddRow(new string[] {
+                            "efgh",
+                            "Tvtv",
+                            ""});
+                table5.AddRow(new string[] {
+                            "ijkl",
+                            "Tvtv",
+                            ""});
+                table5.AddRow(new string[] {
+                            "mnop",
+                            "Tvtv",
+                            ""});
+                table5.AddRow(new string[] {
+                            "qrst",
+                            "Tvtv",
+                            ""});
+                table5.AddRow(new string[] {
+                            "uvwx",
+                            "Tvtv",
+                            ""});
+                table5.AddRow(new string[] {
+                            "yzab",
+                            "Tvtv",
+                            ""});
+#line 26
+testRunner.When("on réserve pour ces voyageurs Un mois avant le départ :", ((string)(null)), table5, "Quand ");
+#line hidden
+#line 38
+testRunner.Then("la réservation est validée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
+#line hidden
+#line 39
+testRunner.And("le prix est de 600 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Et ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlacesOccupees"});
+                table6.AddRow(new string[] {
+                            "1",
+                            "100"});
+                table6.AddRow(new string[] {
+                            "2",
+                            "97"});
+#line 40
+testRunner.And("les wagons sont composés comme ceci :", ((string)(null)), table6, "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.5.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable
