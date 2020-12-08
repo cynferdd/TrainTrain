@@ -91,8 +91,8 @@ namespace TrainTrain.Domain.Tests.Steps
                     _dateVoyage);
             
             var reserve = _service.Reserver(dateReservation, voyage, voyageurs);
-            
-            _context.MontantActuel = reserve ?? 0;
+
+            _context.MontantActuel = reserve ?? new Prix(0);
             _context.ReservationFaite =
                 reserve != null;
         }
@@ -109,6 +109,6 @@ namespace TrainTrain.Domain.Tests.Steps
         
         [Then(@"le prix est de (.+) €")]
         public void VerifierPrix(decimal prix) =>
-            Assert.Equal(prix, _context.MontantActuel);
+            Assert.Equal(new Prix(prix), _context.MontantActuel);
     }
 }

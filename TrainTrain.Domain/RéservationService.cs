@@ -37,13 +37,39 @@ namespace TrainTrain.Domain
             yield return valeur;
         }
     }
-    
+
+    public class Prix : ValueObject
+    {
+        private readonly decimal valeur;
+
+        public Prix(decimal valeur)
+        {
+            this.valeur = valeur;
+        }
+
+        public static Prix operator +(Prix prix1, Prix prix2) =>
+            new Prix(prix1.valeur + prix2.valeur);
+        
+        public static Prix operator -(Prix prix1, Prix prix2) =>
+            new Prix(prix1.valeur - prix2.valeur);
+        
+        public static Prix operator *(Prix prix1, decimal valeur) =>
+            new Prix(prix1.valeur * valeur);
+        
+        public static Prix operator *(decimal valeur, Prix prix2) =>
+            new Prix(valeur * prix2.valeur);
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return valeur;
+        }
+    }
+
     public class ReservationService
     {
         private static readonly TauxOccupation SeuilDeReservation = new TauxOccupation(0.70m);
-        private const decimal Prix = 50m;
+        private static readonly Prix PrixDeBase = new Prix(50m);
 
-        public decimal? Reserver(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
+        public Prix? Reserver(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
         {
             var nbPlaces = voyageurs.Count;
             var reservationValidee =
@@ -55,19 +81,20 @@ namespace TrainTrain.Domain
             return
                 reservationValidee
                 ? CalculPrixFinal(dateReservation, voyage, voyageurs)
-                : (decimal?)null;
+                : null;
         }
 
-        private static decimal CalculPrixFinal(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
+        private static Prix CalculPrixFinal(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
         {
-            var prixDeBase = Prix;
+            var prixDeBase = PrixDeBase;
             if (voyage.Date.AddMonths(-1) <= dateReservation)
-                prixDeBase = Prix + 10;
+                prixDeBase = PrixDeBase + new Prix(10);
             else if (dateReservation < voyage.Date.AddMonths(-3).AddDays(1))
-                prixDeBase = Prix - 20;
+                prixDeBase = PrixDeBase - new Prix(20);
 
             return voyageurs
-                    .Sum(v => prixDeBase - prixDeBase * Reduction(v.CarteReduction));
+                    .Aggregate(new Prix(0), (acc, v) => 
+                        acc + (prixDeBase - prixDeBase * Reduction(v.CarteReduction)));
         }
 
         private static decimal Reduction(CarteReduction? carteReduction) =>
