@@ -25,21 +25,24 @@ namespace TrainTrain.Domain
                 voyage.Date.AddMonths(-1) <= dateReservation
                 ? voyage.Train.ReserverSansSeuil(nbPlaces)
                 : voyage.Train.ReserverLeWagonLePlusRempli(nbPlaces, SeuilDeReservation);
+            
 
+            return
+                reservationValidee
+                ? CalculPrixFinal(dateReservation, voyage, voyageurs)
+                : (decimal?)null;
+        }
+
+        private static decimal CalculPrixFinal(DateTime dateReservation, Voyage voyage, IReadOnlyCollection<Voyageur> voyageurs)
+        {
             var prixDeBase = Prix;
             if (voyage.Date.AddMonths(-1) <= dateReservation)
                 prixDeBase = Prix + 10;
             else if (dateReservation < voyage.Date.AddMonths(-3).AddDays(1))
                 prixDeBase = Prix - 20;
-            
-            var prixFinal =
-                voyageurs
+
+            return voyageurs
                     .Sum(v => prixDeBase - prixDeBase * Reduction(v.CarteReduction));
-            
-            return
-                reservationValidee
-                ? prixFinal
-                : (decimal?)null;
         }
 
         private static decimal Reduction(CarteReduction? carteReduction) =>
