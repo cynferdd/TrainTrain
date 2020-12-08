@@ -15,7 +15,7 @@ namespace TrainTrain.Domain
             var reservationValidee = voyage.Train.Reserver(nbPlaces, SeuilDeReservation);
 
             var prixDeBase = Prix;
-            if (voyage.Date.AddMonths(-1).AddDays(-1) < dateReservation)
+            if (voyage.Date.AddMonths(-1) <= dateReservation)
                 prixDeBase = Prix + 10;
             else if (dateReservation < voyage.Date.AddMonths(-3).AddDays(1))
                 prixDeBase = Prix - 20;
