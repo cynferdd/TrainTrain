@@ -14,7 +14,7 @@ namespace TrainTrain.Domain
             var nbPlaces = voyageurs.Count;
             var reservationValidee =
                 voyage.Date.AddMonths(-1) <= dateReservation
-                ? voyage.Train.ReserverLeWagonLeMoinsRempli(nbPlaces)
+                ? voyage.Train.ReserverSansSeuil(nbPlaces)
                 : voyage.Train.ReserverLeWagonLePlusRempli(nbPlaces, SeuilDeReservation);
 
             var prixDeBase = Prix;

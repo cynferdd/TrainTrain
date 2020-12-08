@@ -12,6 +12,8 @@ namespace TrainTrain.Domain
         public int NbPlaces { get; }
         public int NbPlacesOccupees { get; private set; } = 0;
 
+        public int NbPlacesRestantes => NbPlaces - NbPlacesOccupees;
+
         public void Reserver(int nbPlaces)
         {
             if (NbPlaces < nbPlaces + NbPlacesOccupees)
