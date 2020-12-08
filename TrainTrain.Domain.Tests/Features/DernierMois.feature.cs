@@ -272,12 +272,150 @@ testRunner.And("le prix est de 600 €", ((string)(null)), ((TechTalk.SpecFlow.T
                             "NbPlacesOccupees"});
                 table6.AddRow(new string[] {
                             "1",
-                            "100"});
+                            "97"});
                 table6.AddRow(new string[] {
                             "2",
-                            "97"});
+                            "100"});
 #line 40
 testRunner.And("les wagons sont composés comme ceci :", ((string)(null)), table6, "Et ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="dernier mois avec train à 95% et 92%, et 20 personnes réservent (impossible)")]
+        [Xunit.TraitAttribute("FeatureTitle", "Réservation de places sur le dernier mois avec levée des 70% et possibilité de sp" +
+            "lit")]
+        [Xunit.TraitAttribute("Description", "dernier mois avec train à 95% et 92%, et 20 personnes réservent (impossible)")]
+        public virtual void DernierMoisAvecTrainA95Et92Et20PersonnesReserventImpossible()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("dernier mois avec train à 95% et 92%, et 20 personnes réservent (impossible)", null, tagsOfScenario, argumentsOfScenario);
+#line 45
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Numero",
+                            "NbPlaces",
+                            "Occupation"});
+                table7.AddRow(new string[] {
+                            "1",
+                            "100",
+                            "95%"});
+                table7.AddRow(new string[] {
+                            "2",
+                            "100",
+                            "92%"});
+#line 46
+testRunner.Given("un train avec les wagons suivants :", ((string)(null)), table7, "Etant donné ");
+#line hidden
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nom",
+                            "Prenom",
+                            "CarteReduction"});
+                table8.AddRow(new string[] {
+                            "Toto",
+                            "Titi",
+                            ""});
+                table8.AddRow(new string[] {
+                            "Tata",
+                            "Tyty",
+                            ""});
+                table8.AddRow(new string[] {
+                            "Tutu",
+                            "Titi",
+                            ""});
+                table8.AddRow(new string[] {
+                            "abcd",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "efgh",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "ijkl",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "mnop",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "qrst",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "uvwx",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "yzab",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "abcd",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2ata",
+                            "Tyty",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2utu",
+                            "Titi",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2oto",
+                            "Titi",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2fgh",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2jkl",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2nop",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2rst",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2vwx",
+                            "Tvtv",
+                            ""});
+                table8.AddRow(new string[] {
+                            "2zab",
+                            "Tvtv",
+                            ""});
+#line 50
+testRunner.When("on réserve pour ces voyageurs Un mois avant le départ :", ((string)(null)), table8, "Quand ");
+#line hidden
+#line 72
+testRunner.Then("la réservation est annulée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Alors ");
 #line hidden
             }
             this.ScenarioCleanup();

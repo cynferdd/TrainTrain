@@ -30,16 +30,16 @@ namespace TrainTrain.Domain
         
         public bool ReserverSansSeuil(int nbPlaces)
         {
-            var wagonsAvecDeLaPlace =
-                Wagons
-                    .Where(w => w.NbPlacesOccupees < w.NbPlaces)
-                    .OrderBy(w => w.NbPlacesOccupees)
-                    .ToList();
+            
             
             var nbPlacesRestantesAReserver = nbPlaces;
             while (nbPlacesRestantesAReserver > 0)
             {
-                var wagon = wagonsAvecDeLaPlace.First();
+                var wagon =
+                    Wagons
+                        .Where(w => w.NbPlacesOccupees < w.NbPlaces)
+                        .OrderBy(w => w.NbPlacesOccupees)
+                        .FirstOrDefault();
 
                 var placesReservables =
                     Math.Min(
